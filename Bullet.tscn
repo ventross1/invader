@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctjh6o0divaic"]
+
+[ext_resource type="Script" path="res://projectile.gd" id="1_r81u7"]
+[ext_resource type="Texture2D" uid="uid://dnyl21b8clc4x" path="res://textures/Projectile_Player.png" id="2_3qi24"]
+[ext_resource type="AudioStream" uid="uid://dia5j5d7bb83g" path="res://audio/invaderkilled.wav" id="3_vl67n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wthrt"]
+size = Vector2(2, 8)
+
+[node name="bullet" type="Area2D"]
+rotation = 1.5708
+collision_mask = 5
+script = ExtResource("1_r81u7")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3qi24")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wthrt")
+
+[node name="killed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vl67n")
+
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

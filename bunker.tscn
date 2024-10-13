@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4afvp2af7yxf"]
+
+[ext_resource type="Texture2D" uid="uid://c4txnhp6t6gvi" path="res://textures/shelter.png" id="1_q6pu3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o56fg"]
+size = Vector2(22, 16)
+
+[node name="bunker" type="Area2D" groups=["wall"]]
+collision_mask = 5
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q6pu3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o56fg")

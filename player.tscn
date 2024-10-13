@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://3b75alki7whq"]
+
+[ext_resource type="PackedScene" uid="uid://ctjh6o0divaic" path="res://Bullet.tscn" id="2_60yql"]
+[ext_resource type="Texture2D" uid="uid://5pxxxbjd6itd" path="res://textures/space__0006_Player.png" id="2_pfuoe"]
+[ext_resource type="AudioStream" uid="uid://dcs1g5tk1xg38" path="res://audio/shoot.wav" id="3_tdctg"]
+
+[sub_resource type="GDScript" id="GDScript_vtlwa"]
+script/source = "extends Area2D
+
+signal hit
+
+@export var speed = 400
+@export var bullet : PackedScene
+var screen_size 
+var test = Vector2.ZERO + Vector2(27,27)
+func _ready():
+	screen_size = get_viewport_rect().size
+	hide()
+
+func _process(delta):
+	var velocity = Vector2.ZERO
+	if Global.start == 1:
+		if Input.is_action_pressed(\"right\"):
+			velocity.x += 1
+		if Input.is_action_pressed(\"left\"):
+			velocity.x -= 1
+		if velocity.length() > 0:
+			velocity = velocity.normalized() * speed
+		if Input.is_action_just_pressed(\"shoot\"):
+			shoot()
+			$shoot.play()
+
+	position += velocity * delta
+	position = position.clamp(test, screen_size)
+
+func _on_body_entered(body: Node2D) -> void:
+	hit.emit()
+	$CollisionShape2D.set_deferred(\"disabled\", true)
+	#await get_tree().create_timer(0.5).timeout
+	#$CollisionShape2D.set_deferred(\"disabled\", false)
+
+func start(pos):
+	position = pos
+	$CollisionShape2D.disabled = false
+	show()
+
+func shoot():
+	var b = bullet.instantiate()
+	owner.add_child(b)
+	b.transform = $muzzle.global_transform
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_044f4"]
+size = Vector2(26, 16)
+
+[node name="player" type="Area2D"]
+script = SubResource("GDScript_vtlwa")
+bullet = ExtResource("2_60yql")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-13, 0)
+texture = ExtResource("2_pfuoe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-13, 0)
+shape = SubResource("RectangleShape2D_044f4")
+
+[node name="muzzle" type="Marker2D" parent="."]
+position = Vector2(-13, -9)
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_tdctg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

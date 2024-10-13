@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://3sulajivlpws"]
+
+[ext_resource type="Texture2D" uid="uid://sf2lw6nesxwp" path="res://textures/space__0000_A1.png" id="1_2r0uc"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_2y6s8"]
+[ext_resource type="Texture2D" uid="uid://dp0yjv1f2rw4t" path="res://textures/space__0001_A2.png" id="2_b7f2k"]
+[ext_resource type="AudioStream" uid="uid://dia5j5d7bb83g" path="res://audio/invaderkilled.wav" id="4_h427f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvcem"]
+size = Vector2(16.1644, 16.1644)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d31cj"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("1_2r0uc")
+}, {
+"duration": 3.0,
+"texture": ExtResource("2_b7f2k")
+}],
+"loop": true,
+"name": &"enemy",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["mobs"]]
+motion_mode = 1
+script = ExtResource("1_2y6s8")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.0548)
+shape = SubResource("RectangleShape2D_nvcem")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1.99999)
+sprite_frames = SubResource("SpriteFrames_d31cj")
+animation = &"enemy"
+
+[node name="killed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_h427f")
