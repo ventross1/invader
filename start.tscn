@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bir5v6g7lmahf"]
+
+[ext_resource type="PackedScene" uid="uid://bvq7xwvo5uldj" path="res://hud.tscn" id="1_jm2jk"]
+[ext_resource type="Script" path="res://start.gd" id="1_mqal7"]
+
+[node name="start" type="Node"]
+script = ExtResource("1_mqal7")
+
+[node name="hud" parent="." instance=ExtResource("1_jm2jk")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 456.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="start_game" from="hud" to="." method="new_game"]

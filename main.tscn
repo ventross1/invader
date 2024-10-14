@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://des4xvjamgg3d"]
+[gd_scene load_steps=8 format=3 uid="uid://des4xvjamgg3d"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_cnovv"]
 [ext_resource type="PackedScene" uid="uid://3b75alki7whq" path="res://player.tscn" id="1_w7lcp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bvq7xwvo5uldj" path="res://hud.tscn" id="4_w5brp"]
 [ext_resource type="PackedScene" uid="uid://d4afvp2af7yxf" path="res://bunker.tscn" id="5_kjr4v"]
 [ext_resource type="AudioStream" uid="uid://vkivmtbg4djh" path="res://audio/explosion.wav" id="6_s6jpa"]
+[ext_resource type="AudioStream" uid="uid://dia5j5d7bb83g" path="res://audio/invaderkilled.wav" id="7_ewjwn"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_cnovv")
@@ -18,7 +19,7 @@ offset_bottom = 528.0
 color = Color(0, 0, 0, 1)
 
 [node name="player" parent="." instance=ExtResource("1_w7lcp")]
-position = Vector2(-131, 475)
+position = Vector2(26, 470)
 
 [node name="enemy45" parent="." instance=ExtResource("2_0geof")]
 position = Vector2(199, 250)
@@ -210,6 +211,9 @@ scale = Vector2(2.5, 2.5)
 
 [node name="death_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_s6jpa")
+
+[node name="killed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ewjwn")
 
 [connection signal="hit" from="player" to="." method="game_over"]
 [connection signal="start_game" from="hud" to="." method="new_game"]
