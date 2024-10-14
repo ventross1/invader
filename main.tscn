@@ -19,7 +19,7 @@ offset_bottom = 528.0
 color = Color(0, 0, 0, 1)
 
 [node name="player" parent="." instance=ExtResource("1_w7lcp")]
-position = Vector2(26, 470)
+position = Vector2(-47, 470)
 
 [node name="enemy45" parent="." instance=ExtResource("2_0geof")]
 position = Vector2(199, 250)
@@ -154,10 +154,10 @@ position = Vector2(115, 160)
 position = Vector2(143, 160)
 
 [node name="enemy" parent="." instance=ExtResource("2_0geof")]
-position = Vector2(199, 130)
+position = Vector2(198, 130)
 
 [node name="enemy2" parent="." instance=ExtResource("2_0geof")]
-position = Vector2(171, 130)
+position = Vector2(170, 130)
 
 [node name="startimer" type="Timer" parent="."]
 
@@ -167,31 +167,31 @@ position = Vector2(30, 461)
 [node name="hud" parent="." instance=ExtResource("4_w5brp")]
 
 [node name="enemy3" parent="." instance=ExtResource("2_0geof")]
-position = Vector2(367, 130)
+position = Vector2(366, 130)
 
 [node name="enemy4" parent="." instance=ExtResource("2_0geof")]
-position = Vector2(227, 130)
+position = Vector2(226, 130)
 
 [node name="enemy5" parent="." instance=ExtResource("2_0geof")]
-position = Vector2(87, 130)
+position = Vector2(86, 130)
 
 [node name="enemy6" parent="." instance=ExtResource("2_0geof")]
-position = Vector2(255, 130)
+position = Vector2(254, 130)
 
 [node name="enemy7" parent="." instance=ExtResource("2_0geof")]
-position = Vector2(339, 130)
+position = Vector2(338, 130)
 
 [node name="enemy8" parent="." instance=ExtResource("2_0geof")]
-position = Vector2(311, 130)
+position = Vector2(310, 130)
 
 [node name="enemy9" parent="." instance=ExtResource("2_0geof")]
-position = Vector2(283, 130)
+position = Vector2(282, 130)
 
 [node name="enemy10" parent="." instance=ExtResource("2_0geof")]
-position = Vector2(115, 130)
+position = Vector2(114, 130)
 
 [node name="enemy11" parent="." instance=ExtResource("2_0geof")]
-position = Vector2(143, 130)
+position = Vector2(142, 130)
 
 [node name="bunker" parent="." instance=ExtResource("5_kjr4v")]
 position = Vector2(260, 419)
