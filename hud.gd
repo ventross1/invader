@@ -1,6 +1,9 @@
 extends CanvasLayer
 signal start_game
 
+func _ready() -> void:
+	$score.hide()
+
 func show_message(text):
 	$message.text = text
 	$message.show()
@@ -19,6 +22,7 @@ func update_score(score):
 
 func _on_start_button_pressed():
 	$start.hide()
+	$score.show()
 	start_game.emit()
 
 func _on_message_timer_timeout():
